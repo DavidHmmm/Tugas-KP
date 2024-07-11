@@ -1,0 +1,71 @@
+{% include 'header.html' %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Data Semen</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->    
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+   
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Form Semen</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form method="POST" action="{{ url_for('edit_penjualan', nojual=penjualan[0]) }}">
+                    <div class="form-group">
+                        <label for="kode">Kode:</label>
+                        <select class="form-control" id="kode" name="kode">
+                            {% for barang in barang %}
+                            <option value="{{ barang[0] }}" {% if barang[0] == penjualan[1] %} selected {% endif %}>{{ barang[0] }} - {{ barang[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="terjual">Terjual:</label>
+                        <input type="text" class="form-control" id="terjual" name="terjual" value="{{ penjualan[2] }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tersisa">Tersisa:</label>
+                        <input type="text" class="form-control" id="tersisa" name="tersisa" value="{{ penjualan[3] }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal:</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ penjualan[5] }}" required>
+                    </div>
+                  <!-- /.card-body -->
+   
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% include 'footer.html' %}   
